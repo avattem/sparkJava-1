@@ -25,5 +25,6 @@ public class Main {
         get("/", (req, res) -> {
             res.redirect("index.html"); return null;
         });
+        // get("/hello", (req, res) -> "Hello World");
     }
 }
