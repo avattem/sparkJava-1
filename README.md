@@ -63,8 +63,9 @@ This file in the application is responsible for specifying the type of environme
 As our application belongs to flexible environment, we can specify the list of operations that should be performed on the container to start our application on Google App Engine.
 
 [`FROM`](https://docs.docker.com/engine/reference/builder/#from) gcr.io/google_appengine/openjdk #The container that should be used to deploy our application
-VOLUME /tmp #The volume that should be attached to the container from the underlying infrastructure
-[`ADD`](https://docs.docker.com/engine/reference/builder/#add) spark-1.0-jar-with-dependencies.jar app.jar #In general, 
- `ADD source destination` copies the source file to the destination in the container. Here we will be copying `spark-1.0-jar-with-dependencies.jar` to destination with app.jar name.
+
+[`VOLUME`](https://docs.docker.com/engine/reference/builder/#volume) creates /tmp as a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers
+[`ADD`](https://docs.docker.com/engine/reference/builder/#add) instruction copies new files, directories or remote file URLs from spark-1.0-jar-with-dependencies.jar app.jar and adds them to the filesystem of the image at the path app.jar
+ 
 [`CMD`](https://docs.docker.com/engine/reference/run/#cmd-default-command-or-options) "java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar" executes the command to run our application on Google App Engine Flexible environment.
 
