@@ -21,6 +21,9 @@ import static spark.Spark.*;
 public class Main {
     public static void main(String[] args) {
         port(8080);
-        get("/", (req, res) -> "Hello World");
+        staticFiles.location("/public");
+        get("/", (req, res) -> {
+            res.redirect("index.html"); return null;
+        });
     }
 }
