@@ -65,6 +65,7 @@ As our application belongs to flexible environment, we can specify the list of o
 [`FROM`](https://docs.docker.com/engine/reference/builder/#from) gcr.io/google_appengine/openjdk #The container that should be used to deploy our application
 
 [`VOLUME`](https://docs.docker.com/engine/reference/builder/#volume) creates /tmp as a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers
+
 [`ADD`](https://docs.docker.com/engine/reference/builder/#add) instruction copies new files, directories or remote file URLs from spark-1.0-jar-with-dependencies.jar app.jar and adds them to the filesystem of the image at the path app.jar
  
 [`CMD`](https://docs.docker.com/engine/reference/run/#cmd-default-command-or-options) "java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar" executes the command to run our application on Google App Engine Flexible environment.
