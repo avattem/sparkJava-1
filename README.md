@@ -56,7 +56,7 @@ The above method will serve the request on http://URL/ by redirecting the respon
 From the above code, we can directly serve the request on `http://URL/hello` with a simple string.
 
 # App.yaml
-This file in the application is responsible for specifying the type of environment onto which the Google App Engine should deploy the application onto.
+This file in the application is responsible for specifying the type of environment onto which the Google App Engine should deploy the application onto. As well as some other configurations like autoscaling, service name and many more.
 
 # Dockerfile
 
