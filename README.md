@@ -40,8 +40,30 @@ folder contains a `Dockerfile` and an `app.yaml`, necessary files to [configure
 the VM
 environment](https://cloud.google.com/appengine/docs/managed-vms/config). 
 
-In this example we have a [`main` method] (https://github.com/phanikumarmss/sparkJava/blob/master/src/main/java/com/google/appengine/sparkdemo/Main.java)
+In this example our code runs the [`main`
+method](https://github.com/phanikumarmss/sparkJava/blob/master/src/main/java/com/google/appengine/sparkdemo/Main.java) 
 
- In this example [`main`
-method](https://github.com/phanikumarmss/sparkJava/blob/master/src/main/java/com/google/appengine/sparkdemo/Main.java)
+In the main method, we have a sample java `staticFiles.location("/public");` which specifies the location of the static content. 
+
+get("/", (req, res) -> {
+            res.redirect("index.html"); return null;
+        });
+        
+The above method will serve the request on http://URL/ by redirecting the response to `index.html`
+
+ get("/hello", (req, res) -> "Hello World");
+ 
+From the above code, we can directly serve the request on `http://URL/hello` with a simple string.
+
+# App.yaml
+This file in the application is responsible for specifying the type of environment onto which the Google App Engine should deploy the application onto.
+
+# Dockerfile
+
+As our application belongs to flexible environment, we can specify the list of operations that should be performed on the container to start our application on Google App Engine.
+
+FROM gcr.io/google_appengine/openjdk #The container that should be used to deploy our application
+VOLUME /tmp #The volume that should be attached to the container from the underlying infrastructure
+ADD spark-1.0-jar-with-dependencies.jar app.jar #In general, `ADD source destination` copies the source file to the destination in the container. Here we will be copying `spark-1.0-jar-with-dependencies.jar` to destination with app.jar name.
+CMD [ "java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"] executes the command to run our application on Google App Engine Flexible environment.
 
