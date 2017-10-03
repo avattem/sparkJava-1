@@ -39,6 +39,20 @@ limitations under the License.
   </dependencies>
   <build>
     <plugins>
+        <!-- // [START exec] -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+          <mainClass>com.google.appengine.sparkdemo.Main</mainClass>
+          <arguments>
+            <argument>-jar</argument>
+            <argument>${app.stage.stagingDirectory}/spark-1.0-jar-with-dependencies.jar</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+<!-- // [END exec] -->
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>appengine-maven-plugin</artifactId>
