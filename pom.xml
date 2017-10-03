@@ -39,6 +39,29 @@ limitations under the License.
   </dependencies>
   <build>
     <plugins>
+        <!-- // [START assembly] -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.google.appengine.sparkdemo.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+<!-- // [END assembly] -->
         <!-- // [START exec] -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
